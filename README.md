@@ -53,11 +53,15 @@ Open another terminal and publish message on subscribed topic
 ```sh
 $ mosquitto_pub -m "Message from client XYZ" -t "test"
 ```
-[Secure with a Password](https://mosquitto.org/blog/2013/01/mosquitto-debian-repository/)
+Secure with a Password
+
+[mosquitto_passwd install](https://mosquitto.org/blog/2013/01/mosquitto-debian-repository/)
+
 ```sh
 $ sudo mosquitto_passwd -c /etc/mosquitto/passwd dave
 Password: password
 ```
+
 Create a configuration file for Mosquitto pointing to the password file we have just created.
 ```sh
 $ sudo nano /etc/mosquitto/conf.d/default.conf
@@ -70,7 +74,7 @@ password_file /etc/mosquitto/passwd
 ```
 Save and exit the text editor with "Ctrl+O", "Enter" and "Ctrl+X". Now restart Mosquitto server and test our changes.
 ```sh
-$ sudo systemctl restart mosquitto
+$ sudo service mosquitto restart
 ```
 In the subscribe client window, press "Ctrl+C" to exit the subscribe client and restart it with following command.
 ```sh
