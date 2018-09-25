@@ -53,7 +53,7 @@ Open another terminal and publish message on subscribed topic
 ```sh
 $ mosquitto_pub -m "Message from client XYZ" -t "test"
 ```
-Secure with a Password
+[Secure with a Password](https://mosquitto.org/blog/2013/01/mosquitto-debian-repository/)
 ```sh
 $ sudo mosquitto_passwd -c /etc/mosquitto/passwd dave
 Password: password
