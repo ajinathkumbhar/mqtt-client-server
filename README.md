@@ -1,6 +1,5 @@
- 
-MQTT Client Server test code:
--------------------------------
+# MQTT client-server test code
+
 MQTT stands for MQ Telemetry Transport. It is a publish/subscribe, extremely simple and 
 lightweight messaging protocol, designed for constrained devices and low-bandwidth, 
 high-latency or unreliable networks. The design principles are to minimise network bandwidth 
@@ -9,37 +8,34 @@ some degree of assurance of delivery. These principles also turn out to make the
 of the emerging “machine-to-machine” (M2M) or “Internet of Things” world of connected devices, 
 and for mobile applications where bandwidth and battery power are at a premium.
 
- 
-                           +--------+
-                           |MQtt    |
-                           |client  |
-                           |        |
-                           +---+----+
-                               | Publish
-                               v
-+-------+    Publish     +--------------+                +-------+
-|MQtt   |                |              | Subscribe      |MQtt   |
-|client +--------------> |              | +----------->  |client |
-+-------+                |  MQtt Broker |                +-------+
-                         |    on cloud  |
-                         |              |
-+-------+    Publish     |              |                +-------+
-|MQtt   +--------------> |              | Subscribe      |MQtt   |
-|client |                |              |  +-----------> |client |
-+-------+                +--------------+                +-------+
-                           |Subscribe |Subscribe
-                           v          v
-                      +-------+       +--------+
-                      |MQtt   |       |MQtt    |
-                      |client |       |client  |
-                      +-------+       +--------+
-
-prerequisites:
+                               +--------+
+                               |MQtt    |
+                               |client  |
+                               |        |
+                               +---+----+
+                                   | Publish
+                                   v
+    +-------+    Publish     +--------------+                +-------+
+    |MQtt   |                |              | Subscribe      |MQtt   |
+    |client +--------------> |              | +----------->  |client |
+    +-------+                |  MQtt Broker |                +-------+
+                             |    on cloud  |
+                             |              |
+    +-------+    Publish     |              |                +-------+
+    |MQtt   +--------------> |              | Subscribe      |MQtt   |
+    |client |                |              |  +-----------> |client |
+    +-------+                +--------------+                +-------+
+                               | Subscribe | Subscribe
+                               v           v
+                          +-------+       +--------+
+                          |MQtt   |       |MQtt    |
+                          |client |       |client  |
+                          +-------+       +-------
+# Prerequisites:
 1. MQTT broker on cloud ( Use Mosquitto Broker )
-2. MQTT clients on end devices ( Use python paho-mqtt or MQTT.js )
+2. MQTT clients on end devices ( Use python paho-mqtt or MQTT.js 
 
-1. Install MQTT broker (Mosquitto)
---------------------------------
+# Install MQTT broker (Mosquitto)
 Eclipse Mosquitto is an open source (EPL/EDL licensed) message broker that implements 
 the MQTT protocol versions 3.1 and 3.1.1. Mosquitto is lightweight and is suitable for 
 use on all devices from low power single board computers to full servers.
@@ -55,7 +51,7 @@ Open another terminal and publish message on subscribed topic
 $ mosquitto_pub -m "Message from client XYZ" -t "test"
 
 Secure with a Password
--------------------------------
+
 $ sudo mosquitto_passwd -c /etc/mosquitto/passwd dave
 Password: password
 
@@ -76,7 +72,5 @@ $ mosquitto_sub -t "test" -u "dave" -P "password"
 Now publish a message with the username and password.
 $ mosquitto_pub -t "test" -m "message from mosquitto_pub client" -u "dave" -P "password"
 
-2. Install python module paho-mqtt 
--------------------------------
+# Install python module paho-mqtt 
 pip install paho-mqtt --user
-
