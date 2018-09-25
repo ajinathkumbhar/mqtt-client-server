@@ -84,3 +84,9 @@ $ mosquitto_pub -t "test" -m "message from mosquitto_pub client" -u "dave" -P "p
 ```sh
 $ pip install paho-mqtt --user
 ```
+
+### These are reference links used
+1. [MQTT](https://mqtt.org/)
+2. [paho-mqtt](https://pypi.org/project/paho-mqtt/)
+3. [Mosquitto](https://www.vultr.com/docs/how-to-install-mosquitto-mqtt-broker-server-on-ubuntu-16-04)
+
